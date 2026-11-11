@@ -1,6 +1,8 @@
 # Global-AI-Hackathon-Project
 Hackathon Project Ideas:
 
+Project Idea 1:(Combination of the 3 points below)
+
   # 2. Offline plant or crop disease scanner for low-connectivity users (Android)
 
     What it is: an Android app that diagnoses leaf photos on the phone with no internet, shows its confidence, abstains when unsure, and gives short treatment guidance.
