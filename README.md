@@ -1,4 +1,4 @@
-# Global-AI-Hackathon-Porject
+# Global-AI-Hackathon-Project
 Hackathon Project Ideas:
 
   # 2. Offline plant or crop disease scanner for low-connectivity users (Android)
