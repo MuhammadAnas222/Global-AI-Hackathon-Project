@@ -14,27 +14,22 @@ Hackathon Project Ideas:
 
 Project Idea 1:(Combination of the 3 points below)
 
-  # 2. Offline plant or crop disease scanner for low-connectivity users (Android)
+Architecture
 
-    What it is: an Android app that diagnoses leaf photos on the phone with no internet, shows its confidence, abstains when unsure, and gives short treatment guidance.
-    Why it’s hard: you train or fine-tune an image classifier and convert it for mobile, and you calibrate confidence so “I’m not sure” is trustworthy. Adding on-device language generation is a stretch goal.
-    Evidence: accuracy on a held-out test set, plus a calibration check showing that high-confidence predictions are right more often than low-confidence ones. Include latency on a real phone, and test on photos taken outside the dataset, where accuracy usually drops.
-    Builds on: your computer vision and ML coursework and your Android experience.
-    Cut line: 5-10 disease classes, no language generation.
-    Check: pick a public dataset and read its license before you start. Many are lab-style images that won’t match field photos, so say that in your limitations.
+Layer 1: Offline scanner (the core, must work with no internet)
 
-  # 4. Claim-level literature checker for biology
+Fine-tune a small CNN (MobileNetV3 or EfficientNet-Lite) and convert it to TFLite.
+Pick one crop or a few crops, with 5-10 disease classes plus a “healthy” class.
+Apply temperature scaling for calibration. Abstain (“not sure, try another photo”) below a confidence threshold. Consider an “unknown / not a leaf” class too.
+Datasets: PlantVillage is lab-style and will overfit to clean backgrounds. PlantDoc and Cassava Leaf Disease have more realistic field photos. Read each license first, and state the lab-vs-field gap in your limitations.
 
-    What it is: a multi-agent system that reads papers on a gene or disease, extracts individual claims, grades the evidence for each, flags contradictions between papers, and checks claims against structured databases like Open Targets.
-    Why it’s hard: reliable claim extraction, contradiction detection, and a fair evaluation.
-    Evidence: score its gene-disease claims against known associations in a curated database, and report precision, recall, and the kinds of errors.
-    Builds on: your biomedical agent.
-    Caveat: if you extend your existing agent, disclose that as the starting point and separate what you added during the event.
-    Cut line: abstracts only, one disease area.
+Layer 2: Step-by-step treatment (also offline)
 
-# 5. Real-time, multi-step lab-bench copilot (multimodal)
+Don’t generate treatment advice with an LLM. Pesticide and dosage advice needs to be accurate, so bundle curated treatment protocols per disease, sourced from university extension services or similar, with citations.
+This is where the lab-bench idea fits: a stateful step tracker (“Step 2 of 6: remove infected leaves”, mark done, resume later). Skip speech and vision verification in the first version. A checklist with an optional photo check-in is a stretch goal.
 
-    What it is: you speak or photograph a step, and the assistant follows a protocol, checks your setup against the next step, and warns you about mistakes it can see, such as a wrong volume on a labeled tube.
-    Why it’s hard: it combines speech, vision, and stateful protocol tracking, so the system must remember which step you’re on.
-    Evidence: scripted scenarios with correct and planted-error steps, and how often the assistant catches the mistakes.
-    Caveat: this is the riskiest, because vision on real bench photos is unreliable. Test on realistic photos early on day one, and drop the idea if it fails.
+Layer 3: Literature checker (online only)
+
+A backend (or on-demand call) that pulls abstracts from PubMed or Europe PMC for the detected disease, extracts claims (e.g., “fungicide X reduces blight severity”), grades the evidence (study type, sample size, field vs lab), and flags contradictions between papers.
+Cache results for diseases already looked up so they’re available offline later.
+Cut line: abstracts only, one crop or disease family.
