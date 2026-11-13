@@ -1,6 +1,17 @@
 # Global-AI-Hackathon-Project
 Hackathon Project Ideas:
 
+## Project Idea 0 :-
+##### AI Roundtable - Make your own podcast about a topic u could not find online. 
+
+    A podcast you can actually participate in
+    Imagine two AI personalities(multi-agent) discussing a topic while you interrupt, ask questions, challenge an argument, or change the discussion entirely.
+    Instead of listening to a 40-minute podcast, you could understand today's important news in five minutes, with an option to dig deeper.
+    Possible categories: World news, technology & AI, science, business & economics, and sports.
+
+
+
+
 Project Idea 1:(Combination of the 3 points below)
 
   # 2. Offline plant or crop disease scanner for low-connectivity users (Android)
