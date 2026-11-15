@@ -12,11 +12,11 @@ Hackathon Project Ideas:
 
 
 
-## Project Idea 1:(Combination of the 3 points below)-
+## Project Idea 1:(Combination of the 3 points below) MAIN-
 
  #### Layer 1: Offline scanner (the core, must work with no internet)
 
-Fine-tune a small CNN (MobileNetV3 or EfficientNet-Lite) and convert it to TFLite.
+Fine-tune a small CNN (MobileNetV3 or EfficientNet-Lite)(We are going to use VIT) and convert it to TFLite.
 Pick one crop or a few crops, with 5-10 disease classes plus a “healthy” class.
 Apply temperature scaling for calibration. Abstain (“not sure, try another photo”) below a confidence threshold. Consider an “unknown / not a leaf” class too.
 Datasets: PlantVillage is lab-style and will overfit to clean backgrounds. PlantDoc and Cassava Leaf Disease have more realistic field photos. Read each license first, and state the lab-vs-field gap in your limitations.
