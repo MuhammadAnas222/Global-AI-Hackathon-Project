@@ -1,0 +1,55 @@
+# --- Secrets ---
+.env
+.env.*
+!.env.example
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+*.egg-info/
+.pytest_cache/
+
+# --- Jupyter ---
+.ipynb_checkpoints/
+
+# --- Datasets (too large for git; document download steps instead) ---
+data/
+datasets/
+*.zip
+*.tar
+*.tar.gz
+
+# --- Model weights & checkpoints (use Git LFS or a release for anything we must ship) ---
+models/
+checkpoints/
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+*.bin
+*.h5
+*.keras
+*.onnx
+*.tflite
+*.gguf
+
+# --- Training logs & caches ---
+runs/
+wandb/
+lightning_logs/
+mlruns/
+outputs/
+.cache/
+
+# --- Literature checker cache (Layer 3) ---
+cache/
+
+# --- Editors & OS ---
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
